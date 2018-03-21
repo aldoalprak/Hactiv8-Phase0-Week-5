@@ -22,22 +22,19 @@ function highestScore (students) {
           obj2.score=nilaiTerbaik;
           obj[students[j].class]=obj2;
         }
-      
-      }else if(students[i].name!==obj[students[i].name]) {
-          namaTerbaik=students[i].name;
-          nilaiTerbaik=students[i].score;
-          obj2.name=namaTerbaik;
-          obj2.score=nilaiTerbaik;
-          obj[students[i].class]=obj2;
-      }else if(students[j].name!==obj[students[j].name]) {
-          namaTerbaik=students[j].name;
-          nilaiTerbaik=students[j].score;
-          obj2.name=namaTerbaik;
-          obj2.score=nilaiTerbaik;
-          obj[students[j].class]=obj2;
-        }
+       }
       }  
     }
+  for(var k=0;k<students.length;k++) {
+     obj2={};
+        if(obj[students[k].class]===undefined) {
+          namaTerbaik=students[k].name;
+          nilaiTerbaik=students[k].score;
+          obj2.name=namaTerbaik;
+          obj2.score=nilaiTerbaik;
+          obj[students[k].class]=obj2;
+       }
+     }  
   return obj;  
   }
   
@@ -109,3 +106,24 @@ console.log(highestScore([
 
 
 console.log(highestScore([])); //{}
+
+/* alternatif
+function highestScore (students) {
+  // Code disini
+  var obj={};
+  for(var i=0;i<students.length;i++) {
+    obj[students[i].class]={};
+    obj[students[i].class].name='';
+    obj[students[i].class].score=0;
+    for(var j=0;j<students.length;j++) {
+      if(students[i].class===students[j].class) {
+        if(students[j].score>obj[students[i].class].score){
+          obj[students[i].class].name=students[j].name;
+          obj[students[i].class].score=students[j].score;
+        }
+      }
+    }
+  }
+return obj;  
+}
+*/
