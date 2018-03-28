@@ -4,6 +4,28 @@ function highestScore (students) {
   var namaTerbaik='';
   var nilaiTerbaik=0;
   
+  function highestScore (students) {
+  // Code disini
+  var obj={};
+  for(var i=0;i<students.length;i++) {
+    obj[students[i].class]={};
+    obj[students[i].class].name='';
+    obj[students[i].class].score=0;
+  }
+  
+  for(var j=0;j<students.length;j++) {
+    if(students[j].score>obj[students[j].class].score){
+      obj[students[j].class].name=students[j].name;
+      obj[students[j].class].score=students[j].score;
+    }
+  }
+  return obj;
+}
+   
+
+
+
+  /*
   for(var i=0;i<students.length;i++) {
     var obj2={};
     for(var j=i+1;j<students.length;j++){
@@ -37,7 +59,7 @@ function highestScore (students) {
      }  
   return obj;  
   }
-  
+  */
 
 
 // TEST CASE
